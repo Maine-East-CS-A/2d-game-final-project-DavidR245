@@ -1,8 +1,15 @@
 public class MineSweeper {
 
-    private static String[][] board = new String[14][18];
-    private static String[][] gameBoard = new String[14][18];
+    private String[][] board;
+    private String[][] gameBoard;
     public MineSweeper(int difficulty){
+        board = new String[14][18];
+        gameBoard = new String[14][18];
+        for (int r = 0; r < board.length; r++){
+            for (int c = 0; c < board[r].length; c++) {
+                board[r][c] = "⬜️";
+            }
+        }
         int mineAmount = 30;
         if (difficulty == 1){
             mineAmount = 20;
@@ -33,14 +40,32 @@ public class MineSweeper {
         }
 
     }
-
-    public static void printBoard(){
+    public void printFBoard(){
         System.out.print("\033[H\033[2J");  
         System.out.flush();
-        System.out.println("  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 ");
+        System.out.println("     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 ");
+        int counter = 1;
+        for (int k = 0; k < board.length; k++){
+            System.out.print(counter + " ");
+            if (counter < 10)
+                System.out.print(" ");
+            counter++;
+            for (int m = 0; m < board[0].length; m++){
+                System.out.print("|" + board[k][m]);
+            }
+            System.out.println("|");
+        }
+    }
+
+    public void printBoard(){
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();
+        System.out.println("     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 ");
         int counter = 1;
         for (int k = 0; k < gameBoard.length; k++){
             System.out.print(counter + " ");
+            if (counter < 10)
+                System.out.print(" ");
             counter++;
             for (int m = 0; m < gameBoard[0].length; m++){
                 System.out.print("|" + gameBoard[k][m]);
@@ -48,7 +73,7 @@ public class MineSweeper {
             System.out.println("|");
         }
     }
-    public static boolean changeBoard(int row, int col){
+    public boolean changeBoard(int row, int col){
         int numBombs = 0;
         boolean bombSelected = false;
         row--;
@@ -163,31 +188,31 @@ public class MineSweeper {
         }
         if (bombSelected == false){
             if (numBombs == 0){
-                gameBoard[row][col] = "0️⃣";
+                gameBoard[row][col] = "0️⃣ ";
             }
             if (numBombs == 1){
-                gameBoard[row][col] = "1️⃣";
+                gameBoard[row][col] = "1️⃣ ";
             }
             if (numBombs == 2){
-                gameBoard[row][col] = "2️⃣";
+                gameBoard[row][col] = "2️⃣ ";
             }
             if (numBombs == 3){
-                gameBoard[row][col] = "3️⃣";
+                gameBoard[row][col] = "3️⃣ ";
             }
             if (numBombs == 4){
-                gameBoard[row][col] = "4️⃣";
+                gameBoard[row][col] = "4️⃣ ";
             }
             if (numBombs == 5){
-                gameBoard[row][col] = "5️⃣";
+                gameBoard[row][col] = "5️⃣ ";
             }
             if (numBombs == 6){
-                gameBoard[row][col] = "6️⃣";
+                gameBoard[row][col] = "6️⃣ ";
             }
             if (numBombs == 7){
-                gameBoard[row][col] = "7️⃣";
+                gameBoard[row][col] = "7️⃣ ";
             }
             if (numBombs == 8){
-                gameBoard[row][col] = "8️⃣";
+                gameBoard[row][col] = "8️⃣ ";
             }
             
         }

@@ -17,6 +17,7 @@ public class main{
             check = ms.changeBoard(l, n);
             ms.printBoard();
             if (check == true){
+                ms.printFBoard();
                 System.out.println("You chose a bomb! You lose!");
             }
         }
